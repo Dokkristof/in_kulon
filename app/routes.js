@@ -1,20 +1,16 @@
 import { Router } from "express";
+import ProductController from "./controllers/productController.js";
+
 const router = Router()
 
-router.get('/products', (req, res) => {
-    res.send({msg: "termékek GET"})
-})
-router.post('/products', (req, res) => {
-    res.send({msg: "termékek POST"})
-})
-router.put('/products', (req, res) => {
-    res.send({msg: "termékek PUT"})
-})
+router.get('/products', ProductController.index)
+router.post('/products', ProductController.store)
+router.put('/products/:id', ProductController.update)
+router.delete('/products/:id', ProductController.delete)
+
+
 router.patch('/products', (req, res) => {
     res.send({msg: "termékek PATCH"})
-})
-router.delete('/products', (req, res) => {
-    res.send({msg: "termékek DELETE"})
 })
 
 router.get('/employees', (req, res) => {
